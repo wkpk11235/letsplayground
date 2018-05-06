@@ -1,17 +1,17 @@
-window.onmousemove = logMouseMove;
-
-
 function logMouseMove(event) {
   x=event.clientX
   y=event.clientY
+  create_circle()
 }
 
 function onTouch(event){
   x=event.touches[0].pageX
   y=event.touches[0].pageY
+  create_circle()
 }
 
 document.addEventListener('touchstart', onTouch)
+document.addEventListener('click', logMouseMove)
 
 canvas=document.getElementById('canvas')
 screen=canvas.getContext("2d")
@@ -78,4 +78,3 @@ function create_circle(){
 }
 
 setInterval(simulation,1)
-setInterval(create_circle,1000)
