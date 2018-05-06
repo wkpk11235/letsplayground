@@ -6,6 +6,13 @@ function logMouseMove(event) {
   y=event.clientY
 }
 
+function onTouch(event){
+  x=event.touches[0].pageX
+  y=event.touches[0].pageY
+}
+
+document.addEventListener('touchstart', onTouch)
+
 canvas=document.getElementById('canvas')
 screen=canvas.getContext("2d")
 canvas.width=window.innerWidth
