@@ -100,7 +100,7 @@ function boom1_but_wait(dis){
 
 function boom3(dis){
   for (i=0;i<2;++i){
-    new powder(dis.x,dis.y,-0.75+i*1.5,2,5,5,boom1_but_wait);
+    new powder(dis.x,dis.y,-0.5+i,2,5,5,boom1_but_wait);
   }
   dis.destroy();
   sound.play();
