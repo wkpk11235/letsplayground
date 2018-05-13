@@ -76,12 +76,17 @@ function boom1(dis){
 }
 
 function boom2(dis){
-  new powder(dis.x,dis.y);
+  a=dis.extravars["timer"]||0;
+  a+=1;
+  if (a==3){
+    new powder(dis.x,dis.y);
+    a=0;
+  }
+  dis.extravars['timer']=a;
 }
 
 function boom1_but_wait(dis){
   a=dis.extravars['timer'] || 0;
-  console.log(a);
   a+=1;
   if (a==200){
     for (i=0;i<explosion_power;++i){
@@ -95,7 +100,7 @@ function boom1_but_wait(dis){
 
 function boom3(dis){
   for (i=0;i<2;++i){
-    new powder(dis.x,dis.y,-1+i*2,2,5,5,boom1_but_wait);
+    new powder(dis.x,dis.y,-0.75+i*1.5,2,5,5,boom1_but_wait);
   }
   dis.destroy();
   sound.play();
@@ -120,6 +125,7 @@ class firework {
     this.angle=Math.atan2(this.dest_y-this.y,this.dest_x-this.x);
     this.dx=Math.cos(this.angle)*firework_speed;
     this.dy=Math.sin(this.angle)*firework_speed;
+    this.extravars={};
     if (func==null){
       this.func=explosions[Math.floor(Math.random() * explosions.length)];
     }
