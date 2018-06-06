@@ -1,0 +1,82 @@
+
+/*other stuff*/
+.big {
+  font-size: 50px;
+}
+
+.bigger {
+  font-size:150%;
+}
+
+.smaller {
+  font-size:50%;
+}
+
+.small {
+  font-size: 20px;
+}
+
+
+.cursive {
+  font-family: STXingkai;
+}
+
+.center {
+  text-align: center;
+}
+
+
+
+/*
+TextShaders
+*/
+
+.textShader
+{
+  display: inline-block;
+  /*color: #262626;*/
+  color: #D9D9D9;
+}
+
+.textShader:before {
+  content: attr(data-text);
+  position:absolute;
+  /*color: #D9D9D9;
+  */
+  color: #262626;
+  width:0%;
+  /*transform: translate(0.4%,0%);*/
+  overflow: hidden;
+  white-space: nowrap;
+  transition: 2s;
+}
+
+.textShader:hover:before
+{
+  width:100%;
+}
+
+
+/*Menus*/
+.floatMenu {
+  width:auto;
+  display: block;
+  float:left;
+  padding: 10px;
+  padding-top:0;
+  background-color: #E0FFFF;
+  margin-right: 10px;
+  border: 3px solid black;
+}
+
+.floatContent {
+  /*width:70%;*/
+  height: 100%;
+  display: block;
+  /*float:left;*/
+  overflow: hidden;
+  padding: 10px;
+  padding-top: 0;
+  background-color: #E0FFFF;
+  border: 3px solid black;
+}

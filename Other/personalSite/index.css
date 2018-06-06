@@ -1,0 +1,33 @@
+@font-face {
+  font-family:  "pixel";
+  src: url("Fonts/origami-mommy/origa___.ttf") format("truetype");
+}
+
+@font-face {
+  font-family:  "wooden";
+  src: url("Fonts/burnstown-dam/burnstown dam.ttf") format("truetype");
+}
+
+
+
+body {
+  font-size: 30px;
+}
+
+p {
+  white-space: pre-line;
+}
+
+ul {
+  list-style-type: square;
+}
+
+a {
+  font: "custom";
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  color:red;
+}

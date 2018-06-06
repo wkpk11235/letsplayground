@@ -1,0 +1,63 @@
+<html>
+<head>
+  <title>Some Flippy Animation</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="scene 1">
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+  </div>
+  <div class="scene 2">
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+  </div>
+  <div class="scene 3">
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+    <div class="card">
+      <div class="card_face card_face--front">Welcome</div>
+      <div class="card_face card_face--back">Goodbye</div>
+    </div>
+  <script>
+    card = document.getElementsByClassName('card');
+    function toggleFlip(c){
+      function func(){
+        c.classList.toggle('is-flipped');
+      }
+      return func;
+    }
+    for (i=0;i<card.length;++i){
+      t=toggleFlip(card[i]);
+      card[i].addEventListener( 'click', t);
+      card[i].addEventListener('touchstart',t);
+    }
+  </script>
+</body>
+</html>

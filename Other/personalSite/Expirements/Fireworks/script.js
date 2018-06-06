@@ -18,12 +18,15 @@ sound=new Audio('explosion.wav');
 presses=[];
 fireworks=[];
 
+speed=1;
+firework_speed=5;
+
 class powder {
   constructor(x,y,dx=0,dy=0,radius=2,light=5,func=null) {
     this.x=x;
     this.y=y;
-    this.dx=dx;
-    this.dy=dy;
+    this.dx=dx*speed;
+    this.dy=dy*speed;
     this.light=light;
     this.r=Math.floor(Math.random()*256);
     this.g=Math.floor(Math.random()*256);
@@ -109,7 +112,6 @@ function boom3(dis){
 explosions=[boom1,boom2,boom3];
 
 firework_radius=5;
-firework_speed=3;
 
 class firework {
   constructor(x,y,func=null) {
@@ -177,4 +179,4 @@ function Update(){
   handle_all();
 }
 
-setInterval(Update,1);
+setInterval(Update,5);

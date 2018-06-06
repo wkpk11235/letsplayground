@@ -1,0 +1,36 @@
+body {
+}
+
+.cursive {
+  font-family: STXingkai;
+}
+
+.center {
+  text-align: center;
+}
+
+
+.star {
+  background-image: url("star.jpg");
+  color:white;
+}
+
+.starryTitle {
+  font-size:75px;
+  text-align: center;
+}
+
+a {
+  color:lightblue;
+  text-decoration: none;
+}
+
+a:before {
+  position:relative;
+  content: attr(data-text);
+}
+
+a:hover:before {
+  content: attr(data-hovertext);
+  color:yellow;
+}

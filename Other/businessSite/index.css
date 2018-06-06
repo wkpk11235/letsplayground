@@ -1,0 +1,15 @@
+body {
+  background-color: black;
+  color:white;
+  font-family: pixel;
+  font-size: 50px;
+}
+
+@font-face {
+  font-family:  "pixel";
+  src: url("Fonts/origami-mommy/origa___.ttf") format("truetype");
+}
+
+.title {
+
+}
