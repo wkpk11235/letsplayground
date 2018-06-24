@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>돈을 벌자</title>
+  </head>
+  <body>
+    <!--<img src=Images/coin.png></img>-->
+    <div id="Image Loading">
+      <img src="Images/coin.png" id="coin" hidden=true></img>
+    </div>
+    <div id="canvas-wrap" id="Game CSS">
+      <canvas id="canvas"></canvas>
+      <div class="overlap">
+        <div id="title">돈 모으기</div>
+        <br>
+        <button onclick="reset();m();" id="reset">초기화</button>
+        <button id="store"><a href="store/store.html" onclick="m()">상점</a></button>
+        <div id="jsia">0</div>
+      </div>
+    </div>
+    <div id="Game Scripts">
+      <script src=Scripts/Gif/gif.js></script>
+      <script src=Scripts/objects.js></script>
+      <script src=game.js></script>
+    </div>
+  </body>
+</html>
