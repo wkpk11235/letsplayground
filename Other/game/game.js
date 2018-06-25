@@ -21,7 +21,6 @@ else {
 
 maxTouchLimit=1;
 function touch(event){
-  ev=event;
   for (i=0;i<event.touches.length&&i<maxTouchLimit;++i){
     rawtouch(event.touches[i].clientX,event.touches[i].clientY);
   }
