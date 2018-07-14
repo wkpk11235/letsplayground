@@ -163,15 +163,11 @@ function handle_all(){
   }
 }
 
-function onTouch(event){
-  new firework(event.touches[0].pageX,event.touches[0].pageY)
-}
 
 function onClick(event){
   new firework(event.clientX,event.clientY)
 }
 
-document.addEventListener('touchstart', onTouch)
 document.addEventListener('click', onClick)
 
 function Update(){
