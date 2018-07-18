@@ -1,33 +1,17 @@
-<div id="yee">
-  YEE
-</div>
-
-<!--region script & styling-->
-<style>
-  body{
-    background-color: lightgreen;
-  }
-  #yee{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform: translate(-50%,-50%);
-    font-size: 4em;
-  }
-</style>
-<script>
-yee=document.getElementById("yee");
-function setCol(r,g,b){yee.style.color="rgb("+r.toString()+","+g.toString()+","+b.toString()+")";}
-r=0;
-g=0;
-b=0;
-time=0;
-setInterval(function(){
-  setCol(r,g,b);
-  r=Math.floor(Math.sin(time/45)*125)+130;
-  g=Math.floor(Math.cos(time/40)*105)+150;
-  b=Math.floor(Math.sin(time/22)*50)+205;
-  time++;
-},1);
-</script>
-<!--endregion-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="yee.css"></link>
+  </head>
+  <body>
+    Welp, you found the 404 page! Here's a cool yee.
+    <div id="yee">
+      <b>
+        yee
+      </b>
+    </div>
+    <script src="yee.js"></script>
+  </body>
+</html>
