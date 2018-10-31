@@ -1,0 +1,25 @@
+.shine {
+  animation: shiney infinite 1s;
+}
+
+.wave {
+  position : absolute;
+  font-size: 50px;
+  left : 50%;
+  transform: translate(-50%, -50%);
+  animation: shinewave infinite 2s cubic-bezier(0.5, 0.8, 0.7, 0.5);
+}
+
+@keyframes shiney {
+  0% {background-color: #FF4136;}
+  25% {background-color: #0074D9;}
+  50% {background-color: #01FF70;}
+  75% {background-color: #F012BE}
+  100% {background-color: #FF4136;}
+}
+
+@keyframes shinewave {
+  0% {color : white; top : 75%;}
+  50% {color : black; top : 25%;}
+  100% {color : white; top : 75%;}
+}
