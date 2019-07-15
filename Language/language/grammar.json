@@ -1,5 +1,5 @@
 {
-  "-?[0-9]+(\\.[0-9]+)?": "VAL_NUMBER",
+  "[0-9]+(\\.[0-9]+)?": "VAL_NUMBER",
   "\\\".*\\\"": "VAL_STRING",
   "[A-Za-z]\\w*": "VAL_VARIABLE",
   
@@ -10,6 +10,8 @@
   "\\(": "SYM_LPAREN",
   "\\)": "SYM_RPAREN",
   
-  "\\bif\\b": "STA_IF"
+  "\\bif\\b": "STA_IF",
+  
+  "\n": "NEWLINE"
 }
 

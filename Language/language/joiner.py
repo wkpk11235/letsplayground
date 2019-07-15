@@ -1,15 +1,15 @@
 import re
 
+from .scopes import Scope
 from . import tokens #mutually dependent
 
 class TokenStream():
-    def __init__(self, tokenlist, scope):
+    def __init__(self, tokenlist):
         self.tokenlist = tokenlist
         self.ptr = 0
         self.lpeekptr = 0
         self.rpeekptr = 0
         self.length = len(tokenlist)
-        self.scope = scope
     def rpeek(self):
         return self.tokenlist[self.ptr + self.rpeekptr]
     def lpeek(self):
@@ -37,15 +37,22 @@ class TokenStream():
         self.length += 1
         self.ptr += 1
     def turndown(self): self.rpeekptr = 0; self.lpeekptr = 0;
-    def ended(self): return self.ptr + self.rpeekptr == self.length
+    def rpeekable(self):
+        return self.ptr + self.rpeekptr < self.length
+    def leftover(self):
+        return self.ptr + self.rpeekptr == self.length + 1
+    def ended(self):
+        return self.ptr + self.rpeekptr == self.length
 
-def rejoin(token_1s:tokens.Token_1, scope="main") -> tokens.Token_2:
+scope = Scope()
+def rejoin(token_1s:tokens.Token_1) -> tokens.Token_2:
     tokenstream = TokenStream(token_1s)
     for token2class in tokens.token2_list:
         tokenstream.ptr = 0
         tokenstream.turndown()
         while (not tokenstream.ended()):
-            if not token2class.check(tokenstream):
+            if token2class.check(tokenstream):
+                pass
+            else:
                 tokenstream.passs()
     return tokenstream
-    

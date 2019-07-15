@@ -65,65 +65,85 @@ class Number(Value):
     def __add__(self, other): return Number(self.value + other.value)
     def __sub__(self, other): return Number(self.value - other.value)
     def __mul__(self, other): return Number(self.value * other.value)
-    def __div__(self, other): return Number(self.value / other.value)
+    def __truediv__(self, other): return Number(self.value / other.value)
 
 
 class Variable(Value):
-    def __init__(self, name, value, scope):
+    def __init__(self, name, scope):
         self.type = "Variable"
         self.name = name
-        self.value = value
-        self.register()
+        self.scope = scope.freezescope()
+        scope[name] = self
     def evaluate(self):
-        return self.value
-    def register(self):
-        
+        joiner.scope.setscope(self.scope)
+        return joiner.scope[name]
 
 class Function(Variable):
-    def __init__(self, name, arglength, code):
-        varlist2[name] = value
+    def __init__(self, name, code, scope):
+        self.type = "Function"
+        self.name = name
+        self.code = code
+        self.scope = scope.freezescope()
+        scope[name] = self
+    @classmethod
+    def check(self, tokenstream):
+        pass #later
+
+class SystemFunction(Function):
+    def __init__(self, name, code, scope):
+        super().__init__(name, code, scope)
+    def evaluate(self, args):
+        self.code(args)
+    @classmethod
+    def check(self, tokenstream):
+        # Never in a thousand years motherfucker
+        return False
 
 class CallFunction(Value):
-    def __init__(self, name, args):
+    def __init__(self, name, args, scope):
         self.type = "CallFunction"
         self.name = name
         self.args = args
+        self.scope = scope.freezescope()
     @classmethod
     def check(cls, tokenstream):
-        if (tokenstream.rpeek.type == "VAL_VARIABLE"):
+        if (tokenstream.rpeek().type == "VAL_VARIABLE"):
             name = tokenstream.radvance()
-            if (tokenstream.rpeek.type == "SYM_LPAREN"):
+            if (tokenstream.rpeek().type == "SYM_LPAREN"):
+                tokenstream.radvance()
                 parencount = 1
                 callValues = []
-                while not tokenstream.ended():
+                while tokenstream.rpeekable():
                     advance = tokenstream.radvance()
                     if (advance.type == "SYM_LPAREN"): parencount += 1
                     elif (advance.type == "SYM_RPAREN"): parencount -= 1
                     if  (parencount == 0): break
                     callValues.append(advance)
                 tokenstream.take()
-                tokenstream.leave(cls(name,joiner.rejoin(callValues)))
+                tokenstream.leave(cls(name.value,joiner.rejoin(callValues),joiner.scope))
         tokenstream.turndown()
         return False
     def evaluate(self):
-        return varlist[self.name].evaluate(self.args)
+        joiner.scope.setscope(self.scope)
+        args = self.args.tokenlist[0]
+        return joiner.scope[self.name].evaluate(args.evaluate()) #debug
 
 class Operator(Function):
     operators = ""
     def __init__(self, operator, left, right):
         self.type = "Operator"
         self.operator = operator
-        self.left = left 
+        self.left = left
         self.right = right
     @classmethod
     def check(cls, tokenstream):
         if (tokenstream.rpeek().type == "SYM_OPERATOR"):
             if (tokenstream.rpeek().value in cls.operators):
-                tokenstream.ladvance()
-                tokenstream.radvance()
-                tokenstream.radvance()
+                operator = tokenstream.radvance()
+                left = tokenstream.ladvance()
+                right = tokenstream.radvance()
                 tokenlist = tokenstream.take()
-                tokenstream.leave(cls(tokenlist[1].value, tokenlist[0], tokenlist[2]))
+                tokenstream.leave(cls(operator.value, left, right))
                 return True
         tokenstream.turndown()
         return False
@@ -141,3 +161,5 @@ class AddSub(Operator):
 token2_list = [CallFunction, Number, MultDiv, AddSub]
 
 from . import joiner #mutually dependent
+
+SystemFunction("print", lambda x: print(x.value), joiner.scope)
