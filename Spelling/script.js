@@ -1,5 +1,8 @@
 "238c7c61-12e3-429f-aa3e-0067c68eae83"
-key = decodeURI(document.location.href.split("=")[1]);
+var key = "";
+window.onload = function() {
+	key = decodeURI(document.location.href.split("=")[1]);
+}
 div = document.getElementById("ans");
 number = document.getElementById("number");
 def = document.getElementById("definition");
@@ -32,7 +35,7 @@ function say(w, check) {
   let xmlhttp = new XMLHttpRequest();
   let url = "https://www.dictionaryapi.com/api/v3/references/collegiate/json/"+w+"?key="+key;
   xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
+    if (this.readyState == 4 && this.status == 200) {
       arrrrrr = JSON.parse(this.responseText);
       if (check && arrrrrr[0].meta.id.split(":")[0] != w) {
         word = arrrrrr[0].meta.id.split(":")[0];
