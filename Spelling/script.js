@@ -1,4 +1,5 @@
-key = window.location.href.split("=")[1];
+"238c7c61-12e3-429f-aa3e-0067c68eae83"
+key = decodeURI(window.location.href.split("=")[1]);
 div = document.getElementById("ans");
 number = document.getElementById("number");
 def = document.getElementById("definition");
