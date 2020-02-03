@@ -1,5 +1,4 @@
-var key = "";
-function login(id) { key = id };
+key = window.location.href.split("=")[1];
 div = document.getElementById("ans");
 number = document.getElementById("number");
 def = document.getElementById("definition");
