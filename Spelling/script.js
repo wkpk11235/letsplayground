@@ -1,16 +1,9 @@
-"238c7c61-12e3-429f-aa3e-0067c68eae83"
-var key = "";
-window.onload = function() {
-	key = decodeURI(document.location.href.split("=")[1]);
-}
+var key = localStorage["PASSWORD"];
 div = document.getElementById("ans");
 number = document.getElementById("number");
 def = document.getElementById("definition");
-
-parser = new DOMParser();
 
-pointer = 0;
-
+parser = new DOMParser();pointer = 0;
 var word = data[pointer];
 checking = null;
 arrrrrr = null;
