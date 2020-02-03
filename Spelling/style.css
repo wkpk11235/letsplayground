@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+:root {
+  --color-background: #054882;
+  --color-foreground: #468CC8;
+  --color-buttonactive: #0080FF;
+  --color-buttonactiveback: #003283;
+}
+
+body {
+  background-color: var(--color-background);
+  border:0;
+  margin:0;
+  font-family: "Fjalla One";
+  font-size: 50px;
+  color: var(--color-background);
+  font-weight: 600;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#padding1 {
+  margin-bottom: 15vh;
+}
+
+#padding2 {
+  margin-bottom: 3vh;
+}
+
+#padding3 {
+  margin-bottom: 10vh;
+}
+
+#definition-wrapper {
+  background-color: var(--color-foreground);
+  padding: 2vh calc(40vw - 175px);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#definition {
+  display: block;
+  text-align: left;
+  font-family: "Roleman";
+  letter-spacing: normal;
+  font-weight: normal;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size:0%;
+  height: 0%;
+  overflow-y: hidden;
+  transition: all 0.5s;
+}
+
+#definition-wrapper:hover > #definition {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 60%;
+  height: 100%;
+}
+
+#ans-wrapper {
+  display: block;
+  background-color: var(--color-foreground);
+  padding: calc(2vw + 10px);
+}
+
+#ans {
+  text-align: center;
+}
+
+#ans:focus {
+  outline: none;
+}
+
+a {
+  display: block;
+  background-color: transparent;
+  padding: 10px;
+  font-family: "Fjalla One";
+  font-size: 50px;
+  color: var(--color-foreground);
+  padding-left: 3vw;
+}
+
+a:hover {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+  cursor: pointer;
+}
+
+a:active {
+  color: var(--color-buttonactive);
+  background-color: var(--color-buttonactiveback);
+}
+
+#number {
+  display:block;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  text-align: center;
+  color: var(--color-foreground);
+  font-size: 80%;
+  transform:translateX(-50%);
+}
