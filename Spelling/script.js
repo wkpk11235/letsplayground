@@ -1,4 +1,7 @@
-var key = localStorage["PASSWORD"];
+var key = "";
+window.onload = function() {
+	key = decodeURI(document.location.href.split("=")[1]);
+}
 div = document.getElementById("ans");
 number = document.getElementById("number");
 def = document.getElementById("definition");
